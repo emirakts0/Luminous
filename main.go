@@ -2,6 +2,7 @@ package main
 
 import (
 	"Luminous/icon"
+	"errors"
 	"fmt"
 	"golang.org/x/sys/windows"
 	"golang.org/x/sys/windows/registry"
@@ -14,6 +15,19 @@ var mToggle *systray.MenuItem
 var quitChan chan struct{}
 
 func main() {
+	mutexName := "LuminousMutex"
+	m, err := windows.CreateMutex(nil, false, windows.StringToUTF16Ptr(mutexName))
+	if err != nil {
+		fmt.Println("Error creating mutex:", err)
+		os.Exit(1)
+	}
+	defer windows.CloseHandle(m)
+
+	if errors.Is(windows.GetLastError(), windows.ERROR_ALREADY_EXISTS) {
+		fmt.Println("Luminous is already running.")
+		os.Exit(0)
+	}
+
 	addToStartup()
 	systray.Run(onReady, onExit)
 }
