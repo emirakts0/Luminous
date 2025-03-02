@@ -1,0 +1,3 @@
+goversioninfo -o resource.syso
+
+go build -ldflags="-H=windowsgui -s -w" -o luminous.exe

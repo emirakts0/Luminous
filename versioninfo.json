@@ -1,0 +1,22 @@
+{
+  "FixedFileInfo": {
+    "FileVersion": {
+      "Major": 1,
+      "Minor": 0,
+      "Patch": 0,
+      "Build": 0
+    },
+    "ProductVersion": {
+      "Major": 1,
+      "Minor": 0,
+      "Patch": 0,
+      "Build": 0
+    }
+  },
+  "StringFileInfo": {
+    "FileDescription": "Luminous Theme Switcher",
+    "ProductName": "Luminous",
+    "CompanyName": "emir"
+  },
+  "IconPath": "icon/app.ico"
+}
